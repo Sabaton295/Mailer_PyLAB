@@ -1,16 +1,18 @@
-import socket
-import smtplib
-import configparser
 from email.mime.text import MIMEText
+import configparser
+import smtplib
+import socket
 import random
 
 config = configparser.ConfigParser()
 config.read('config.ini')
 
+
 EMAIL_LOGIN = config['EMAIL']['EMAIL_LOGIN']
 EMAIL_PASSWORD = config['EMAIL']['EMAIL_PASSWORD']
 SMTP_HOST = config['EMAIL']['SMTP_HOST']
 SMTP_PORT = int(config['EMAIL']['SMTP_PORT'])
+
 
 def send_email(to_email, subject, message):
     msg = MIMEText(message)
@@ -26,6 +28,7 @@ def send_email(to_email, subject, message):
     except Exception as e:
         print(f"Ошибка при отправке email: {e}")
         return False
+
 
 def handle_client(client_socket):
     data = client_socket.recv(1024).decode()
@@ -46,7 +49,8 @@ def handle_client(client_socket):
 
     client_socket.close()
 
-def main():
+
+def server_start():
     server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     server.bind(('localhost', 8888))
     server.listen(5)
@@ -58,5 +62,5 @@ def main():
         print(f"Подключение от {addr}")
         handle_client(client)
 
-if __name__ == "__main__":
-    main()
+
+server_start()
