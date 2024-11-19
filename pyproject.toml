@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "mailer_pylab"
+version = "0.1.0"
+description = ""
+authors = ["Daniel Urmanov <sabaton295@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+imap-tools = "^1.7.4"
+bs4 = "^0.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+start = "mailer_pylab.startup:start"
