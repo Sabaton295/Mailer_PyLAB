@@ -55,11 +55,11 @@ def server_start():
     server.bind(('localhost', 8888))
     server.listen(5)
 
-    print("Сервер запущен и ожидает подключений...")
+    print("[ Сервер запущен успешно ]")
 
     while True:
         client, addr = server.accept()
-        print(f"Подключение от {addr}")
+        print(f"Новое подключение от {addr}")
         handle_client(client)
 
 
