@@ -2,7 +2,6 @@ import imaplib
 import email
 import time
 import configparser
-import os
 
 from bs4 import BeautifulSoup
 
